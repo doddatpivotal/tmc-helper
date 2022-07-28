@@ -1,0 +1,8 @@
+.DS_Store
+local-config/*
+generated/
+!local-config/*-REDACTED.yaml
+!local-config/.gitkeep
+.vscode/
+keys/
+test/

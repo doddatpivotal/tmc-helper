@@ -1,0 +1,26 @@
+fullName:
+  name: contour-user
+meta:
+  description: Provides standard viewer access for contour resources
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  rules:
+  - apiGroups:
+    - projectcontour.io
+    resources:
+    - httpproxies
+    verbs:
+    - create
+    - update
+    - delete
+    - patch
+    - list
+    - get
+    - watch

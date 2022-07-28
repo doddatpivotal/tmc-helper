@@ -1,0 +1,22 @@
+# This custom role is a hack.  It allow use of all PSPs, not just the privileged PSP.  When TMC extends api to allow
+# specification of resourceNames to apply the verb to, we can tighten this up.
+fullName:
+  name: use-privilege-psp-workspace
+meta: 
+  description: Allows for privilege pod execution on workspaces
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  rules:
+  - apiGroups:
+    - policy
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
