@@ -1,0 +1,19 @@
+fullName:
+  name: tanzu-app-editor
+meta:
+  description: Provides standard edit access for tanzu resources
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  aggregationRule:
+    clusterRoleSelectors:
+    - matchLabels:
+        apps.tanzu.vmware.com/aggregate-to-app-editor: "true"
+    - matchLabels:
+        rbac.authorization.k8s.io/aggregate-to-edit: "true"

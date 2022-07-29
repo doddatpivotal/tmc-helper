@@ -1,0 +1,19 @@
+fullName:
+  name: tanzu-app-viewer
+meta:
+  description: Provides standard view access for tanzu resources
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  aggregationRule:
+    clusterRoleSelectors:
+    - matchLabels:
+        apps.tanzu.vmware.com/aggregate-to-app-viewer: "true"
+    - matchLabels:
+        rbac.authorization.k8s.io/aggregate-to-view: "true"

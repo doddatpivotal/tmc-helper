@@ -8,6 +8,8 @@ TMC Advanced offers the ability to create custom roles that can be bound to user
 
 - vSphere with Tanzu
 - Contour
+- Build Service
+- General Tanzu App
 
 You can apply custom roles by executing the following.  It will upsert the custom roles maintained in the `custom-roles` directory.
 

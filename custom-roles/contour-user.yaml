@@ -4,6 +4,7 @@ meta:
   description: Provides standard edit access for contour resources
   labels:
     created-by: tmc-helper
+    apps.tanzu.vmware.com/aggregate-to-app-editor: "true"
 spec:
   resourceTypes:
   - workspaces

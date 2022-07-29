@@ -1,0 +1,17 @@
+fullName:
+  name: build-service-user
+meta:
+  description: Provides standard edit access for build-service resources
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  aggregationRule:
+    clusterRoleSelectors:
+    - matchLabels:
+        buildservice.tanzu.vmware.com/aggregate-to-user-role: "true"
