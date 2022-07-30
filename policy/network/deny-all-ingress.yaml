@@ -1,0 +1,14 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'deny-all-ingress'
+spec:
+  input: {}
+  recipe: deny-all
+  recipeVersion: v1
+  type: network-policy
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "tenant"
+      operator: Exists
+

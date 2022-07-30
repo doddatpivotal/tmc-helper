@@ -1,0 +1,11 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'security-baseline'
+spec:
+  input:
+    audit: true
+  namespaceSelector:
+  recipe: baseline
+  recipeVersion: v1
+  type: security-policy  

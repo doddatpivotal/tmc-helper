@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'allow-ingress-from-web-tier-to-db-tier'
+spec:
+  input:
+    rules:
+    - ruleSpec:
+      - podSelector:
+        - key: app-tier
+          value: web-app
+    toPodLabels:
+    - key: app-tier
+      value: db
+  recipe: custom-ingress
+  recipeVersion: v1
+  type: network-policy
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "tenant"
+      operator: Exists
+

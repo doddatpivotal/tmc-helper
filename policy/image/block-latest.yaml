@@ -1,7 +1,7 @@
 #@ load("@ytt:data", "data")
 ---
 fullName:
-  name: block-latest
+  name: #@ data.values.name_prefix + 'block-latest'
 spec:
   input: {}
   recipe: block-latest-tag
@@ -11,7 +11,3 @@ spec:
     matchExpressions:
     - key: #@ data.values.label_namespace + "tenant"
       operator: Exists
-    - key: tmc.cloud.vmware.com/managed
-      operator: In
-      values:
-      - "true"

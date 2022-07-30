@@ -1,0 +1,28 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'require-app-tier-label'
+spec:
+  input:
+    audit: false
+    parameters:
+      labels:
+      - key: app-tier
+        value: ""
+    targetKubernetesResources:
+    - apiGroups:
+      - ""
+      kinds:
+      - PodTemplate
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + 'tenant'
+      operator: Exists
+  recipe: tmc-require-labels
+  recipeVersion: v1
+  type: custom-policy
+

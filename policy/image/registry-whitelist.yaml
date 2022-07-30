@@ -1,7 +1,7 @@
 #@ load("@ytt:data", "data")
 ---
 fullName:
-  name: registry-whitelist
+  name: #@ data.values.name_prefix + 'registry-whitelist'
 spec:
   input:
     rules: 
@@ -18,7 +18,3 @@ spec:
     matchExpressions:
     - key: #@ data.values.label_namespace + "tenant"
       operator: Exists
-    - key: tmc.cloud.vmware.com/managed
-      operator: In
-      values:
-      - "true"
