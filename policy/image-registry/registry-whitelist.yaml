@@ -1,0 +1,24 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: registry-whitelist
+spec:
+  input:
+    rules: 
+    - hostname: #@ data.values.private_registry
+      tag: {}        
+    #! Required for TSM images, specifically the sidecar container
+    - hostname: public.ecr.aws
+      imageName: v6x6b8s5/vmwareallspark/*
+      tag: {}
+  recipe: custom
+  recipeVersion: v1
+  type: image-policy
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "tenant"
+      operator: Exists
+    - key: tmc.cloud.vmware.com/managed
+      operator: In
+      values:
+      - "true"

@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'compute-medium'
+spec:
+  input:
+    limitsCpu: "4"
+    limitsMemory: 4Gi
+    persistentvolumeclaimsPerClass: {}
+    requestsCpu: "2"
+    requestsMemory: 2Gi
+    requestsStoragePerClass: {}
+    resourceCounts: {}
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "quota-compute"
+      operator: In
+      values:
+      - medium
+  recipe: custom
+  recipeVersion: v1
+  type: namespace-quota-policy

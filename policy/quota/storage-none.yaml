@@ -1,0 +1,19 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'storage-none'
+spec:
+  input:
+    persistentvolumeclaimsPerClass: {}
+    requestsStorage: 0Gi
+    requestsStoragePerClass: {}
+    resourceCounts: {}
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "quota-storage"
+      operator: In
+      values:
+      - none
+  recipe: custom
+  recipeVersion: v1
+  type: namespace-quota-policy

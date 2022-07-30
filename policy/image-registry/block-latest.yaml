@@ -1,0 +1,17 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: block-latest
+spec:
+  input: {}
+  recipe: block-latest-tag
+  recipeVersion: v1
+  type: image-policy
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "tenant"
+      operator: Exists
+    - key: tmc.cloud.vmware.com/managed
+      operator: In
+      values:
+      - "true"

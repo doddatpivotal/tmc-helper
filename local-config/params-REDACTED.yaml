@@ -1,0 +1,5 @@
+#@data/values
+---
+name_prefix: # Example se-dpfeffer-tko-lab- However, leave blank if you want no prefix, which is normal
+label_namespace: # Example acmeco.com/
+private_registry: # Example: harbor.foo.com

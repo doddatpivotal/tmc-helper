@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'compute-large'
+spec:
+  input:
+    limitsCpu: "25" #! Unreasonably high to allow for the large limits required by acme-fitness / tsm demo and the sidecar proxies
+    limitsMemory: 16Gi
+    persistentvolumeclaimsPerClass: {}
+    requestsCpu: "3" #! Unreasonably high to allow for the large limits required by acme-fitness / tsm demo and the sidecar proxies
+    requestsMemory: 4Gi
+    requestsStoragePerClass: {}
+    resourceCounts: {}
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "quota-compute"
+      operator: In
+      values:
+      - large
+  recipe: custom
+  recipeVersion: v1
+  type: namespace-quota-policy

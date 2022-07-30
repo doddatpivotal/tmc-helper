@@ -1,0 +1,20 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'external-services-standard'
+spec:
+  input:
+    persistentvolumeclaimsPerClass: {}
+    requestsStoragePerClass: {}
+    resourceCounts:
+      services.loadbalancers: 5
+      services.nodeports: 5
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "quota-external-services"
+      operator: In
+      values:
+      - standard
+  recipe: custom
+  recipeVersion: v1
+  type: namespace-quota-policy

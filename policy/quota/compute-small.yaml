@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'compute-small'
+spec:
+  input:
+    limitsCpu: "1"
+    limitsMemory: 2Gi
+    persistentvolumeclaimsPerClass: {}
+    requestsCpu: 600m
+    requestsMemory: 512Mi
+    requestsStoragePerClass: {}
+    resourceCounts: {}
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "quota-compute"
+      operator: In
+      values:
+      - small
+  recipe: custom
+  recipeVersion: v1
+  type: namespace-quota-policy

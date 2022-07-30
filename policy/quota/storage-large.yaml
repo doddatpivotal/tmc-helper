@@ -1,0 +1,19 @@
+#@ load("@ytt:data", "data")
+---
+fullName:
+  name: #@ data.values.name_prefix + 'storage-large'
+spec:
+  input:
+    persistentvolumeclaimsPerClass: {}
+    requestsStorage: 40Gi
+    requestsStoragePerClass: {}
+    resourceCounts: {}
+  namespaceSelector:
+    matchExpressions:
+    - key: #@ data.values.label_namespace + "quota-storage"
+      operator: In
+      values:
+      - large
+  recipe: custom
+  recipeVersion: v1
+  type: namespace-quota-policy
