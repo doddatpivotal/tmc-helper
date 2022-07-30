@@ -1,5 +1,6 @@
 #@data/values
 ---
-name_prefix: # Example se-dpfeffer-tko-lab- However, leave blank if you want no prefix, which is normal
-label_namespace: # Example acmeco.com/
+personalize: false # Set to true if you want to custom names and label nameespace
+name_prefix: # (optional, only relevent when personalize=true) Example se-dpfeffer-tko-lab- However, leave blank if you want no prefix, which is normal
+label_namespace: # (optional, only relevent when personalize=true) Example acmeco.com/
 private_registry: # Example: harbor.foo.com

@@ -4,7 +4,7 @@ This repo can be used to assist in managing TMC resources.  Helpful to bootstrap
 
 ## Usage
 
-Copy `local-config/params-REDACTED.yaml` and name it something else.  Update to your specifications and then set the environment variables to the path.
+Copy `local-config/params-REDACTED.yaml` and name it something else.  Update to your specifications and then set the environment variables to the path.  The scripts allow for some personalization to the label_namespace and to the name prefix.  This may be helpful in an org which is used by several others (like in a lab environment). You can enable personization in the params file.
 
 ```bash
 cp local-config/params-REDACTED.yaml local-config/params.yaml

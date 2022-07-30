@@ -1,0 +1,30 @@
+#@ load("@ytt:overlay", "overlay")
+#@ load("@ytt:data", "data")
+
+#@ if data.values.personalize == True:
+#@overlay/match by=overlay.all
+---
+fullName:
+  #@overlay/replace via=lambda left, right: data.values.name_prefix + left
+  name:
+spec:
+  #@overlay/match when=1
+  namespaceSelector:
+    matchExpressions:
+    #@overlay/match by="key", when=1
+    - operator: Exists
+      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'tenant'
+      key: tmc-helper/tenant
+    #@overlay/match by="key", when=1
+    - operator: In
+      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'quota-compute'
+      key: tmc-helper/quota-compute
+    #@overlay/match by="key", when=1
+    - operator: In
+      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'quota-external-services'
+      key: tmc-helper/quota-external-services
+    #@overlay/match by="key", when=1
+    - operator: In
+      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'quota-storage'
+      key: tmc-helper/quota-storage
+#@ end      

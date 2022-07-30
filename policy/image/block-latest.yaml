@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'block-latest'
+  name: block-latest
 spec:
   input: {}
   recipe: block-latest-tag
@@ -9,5 +7,5 @@ spec:
   type: image-policy
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "tenant"
+    - key: tmc-helper/tenant
       operator: Exists

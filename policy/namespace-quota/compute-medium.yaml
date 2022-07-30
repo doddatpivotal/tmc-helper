@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'compute-medium'
+  name: compute-medium
 spec:
   input:
     limitsCpu: "4"
@@ -13,7 +11,7 @@ spec:
     resourceCounts: {}
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "quota-compute"
+    - key: tmc-helper/quota-compute
       operator: In
       values:
       - medium

@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'allow-all-ingress-to-web-apps'
+  name: allow-all-ingress-to-web-apps
 spec:
   input:
     toPodLabels:
@@ -12,6 +10,6 @@ spec:
   type: network-policy
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "tenant"
+    - key: tmc-helper/tenant
       operator: Exists
 

@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'compute-small'
+  name: compute-small
 spec:
   input:
     limitsCpu: "1"
@@ -13,7 +11,7 @@ spec:
     resourceCounts: {}
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "quota-compute"
+    - key: tmc-helper/quota-compute
       operator: In
       values:
       - small

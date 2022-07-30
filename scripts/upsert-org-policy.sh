@@ -12,10 +12,9 @@ POLICY_TYPE=$2
 echo "Upserting $POLICY_YAML_FILE"
 
 GENERATED_FILE=generated/$POLICY_YAML_FILE
-DIR="$(dirname "${VAR}")"
 
 mkdir -p $(dirname $GENERATED_FILE)
-ytt -f $POLICY_YAML_FILE -f $PARAMS_YAML > $GENERATED_FILE
+ytt -f $POLICY_YAML_FILE -f $PARAMS_YAML -f overlays > $GENERATED_FILE
 
 POLICY=$(yq e .fullName.name $GENERATED_FILE)
 

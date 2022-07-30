@@ -13,5 +13,5 @@ POLICY_TYPE=$1
 
 for file in policy/$POLICY_TYPE/*
 do
-  eval "$SCRIPTS_DIR/delete-org-policy.sh $SCRIPTS_DIR/../$file $POLICY_TYPE"
+  eval "$SCRIPTS_DIR/delete-org-policy.sh $file $POLICY_TYPE"
 done

@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'compute-large'
+  name: compute-large
 spec:
   input:
     limitsCpu: "25" #! Unreasonably high to allow for the large limits required by acme-fitness / tsm demo and the sidecar proxies
@@ -13,7 +11,7 @@ spec:
     resourceCounts: {}
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "quota-compute"
+    - key: tmc-helper/quota-compute
       operator: In
       values:
       - large

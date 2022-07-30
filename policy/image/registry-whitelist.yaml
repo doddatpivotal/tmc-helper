@@ -1,7 +1,7 @@
 #@ load("@ytt:data", "data")
 ---
 fullName:
-  name: #@ data.values.name_prefix + 'registry-whitelist'
+  name: registry-whitelist
 spec:
   input:
     rules: 
@@ -16,5 +16,5 @@ spec:
   type: image-policy
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "tenant"
+    - key: tmc-helper/tenant
       operator: Exists

@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'require-app-tier-label'
+  name: require-app-tier-label
 spec:
   input:
     audit: false
@@ -20,7 +18,7 @@ spec:
       - Pod
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + 'tenant'
+    - key: tmc-helper/tenant
       operator: Exists
   recipe: tmc-require-labels
   recipeVersion: v1

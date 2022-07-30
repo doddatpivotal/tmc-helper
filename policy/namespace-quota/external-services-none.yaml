@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'external-services-none'
+  name: external-services-none
 spec:
   input:
     persistentvolumeclaimsPerClass: {}
@@ -11,7 +9,7 @@ spec:
       services.nodeports: 0
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "quota-external-services"
+    - key: tmc-helper/quota-compute
       operator: In
       values:
       - none

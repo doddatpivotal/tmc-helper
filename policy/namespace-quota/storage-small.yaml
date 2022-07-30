@@ -1,7 +1,5 @@
-#@ load("@ytt:data", "data")
----
 fullName:
-  name: #@ data.values.name_prefix + 'storage-small'
+  name: storage-small
 spec:
   input:
     persistentvolumeclaimsPerClass: {}
@@ -10,7 +8,7 @@ spec:
     resourceCounts: {}
   namespaceSelector:
     matchExpressions:
-    - key: #@ data.values.label_namespace + "quota-storage"
+    - key: tmc-helper/quota-compute
       operator: In
       values:
       - small
