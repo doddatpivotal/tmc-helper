@@ -1,5 +1,5 @@
 fullName:
-  name: contour-user
+  name: contour-viewer
 meta:
   description: Provides standard viewer access for contour resources
   labels:
