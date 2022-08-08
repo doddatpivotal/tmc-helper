@@ -11,20 +11,12 @@ spec:
   #@overlay/match when=1
   namespaceSelector:
     matchExpressions:
-    #@overlay/match by="key", when=1
-    - operator: Exists
-      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'tenant'
-      key: tmc-helper/tenant
-    #@overlay/match by="key", when=1
-    - operator: In
-      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'quota-compute'
-      key: tmc-helper/quota-compute
-    #@overlay/match by="key", when=1
-    - operator: In
-      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'quota-external-services'
-      key: tmc-helper/quota-external-services
-    #@overlay/match by="key", when=1
-    - operator: In
-      #@overlay/replace via=lambda left, right: data.values.label_namespace + 'quota-storage'
-      key: tmc-helper/quota-storage
+    #@overlay/match by=lambda indexOrKey, left, right: left["key"] == "tmc-helper/tenant", when=1
+    - key: #@ data.values.label_namespace + 'tenant'
+    #@overlay/match by=lambda indexOrKey, left, right: left["key"] == "tmc-helper/quota-compute", when=1
+    - key: #@ data.values.label_namespace + 'quota-compute'
+    #@overlay/match by=lambda indexOrKey, left, right: left["key"] == "tmc-helper/quota-external-services", when=1
+    - key: #@ data.values.label_namespace + 'quota-external-services'
+    #@overlay/match by=lambda indexOrKey, left, right: left["key"] == "tmc-helper/quota-storage", when=1
+    - key: #@ data.values.label_namespace + 'quota-storage'
 #@ end      
