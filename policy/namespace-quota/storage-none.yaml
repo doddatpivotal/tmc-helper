@@ -8,7 +8,7 @@ spec:
     resourceCounts: {}
   namespaceSelector:
     matchExpressions:
-    - key: tmc-helper/quota-compute
+    - key: tmc-helper/quota-storage
       operator: In
       values:
       - none

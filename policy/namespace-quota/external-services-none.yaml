@@ -9,7 +9,7 @@ spec:
       services.nodeports: 0
   namespaceSelector:
     matchExpressions:
-    - key: tmc-helper/quota-compute
+    - key: tmc-helper/quota-external-services
       operator: In
       values:
       - none
