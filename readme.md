@@ -66,16 +66,27 @@ You can apply security policies by executing the following.  It will upsert the 
 ./scripts/upsert-org-policies.sh security
 ```
 
+## Custom Policies Templates
+
+TMC provides a set of starter custom policy templates based on Gatekeeper.  You can create your own templates as well.  This repo contains sample user provide custom templates
+
+- Restrict access to external secrets based upon prefix
+
+```base
+tmc policy templates create -f policy/custom-templates/es-begins-with.yaml
+```
+
 ## Custom Policies
 
 TMC Advanced offers the ability to manage custom policies.  The following set of custom policies aligns with common Tanzu usage.
 
 - Require pods to specify app-tier
+- External-secret restrict access based upon prefix
 
 You can apply custom policies by executing the following.  It will upsert the policies maintained in the `policy/custom` directory.
 
 ```bash
-./scripts/upsert-org-policies.sh security
+./scripts/upsert-org-policies.sh custom
 ```
 
 ## Network Policies

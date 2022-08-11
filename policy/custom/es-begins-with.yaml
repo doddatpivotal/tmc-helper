@@ -1,0 +1,20 @@
+fullName:
+  name: es-begins-with
+spec:
+  input:
+    audit: false
+    parameters:
+      label: external-secrets.io/match-regex
+    targetKubernetesResources:
+    - apiGroups:
+      - "external-secrets.io"
+      kinds:
+      - ExternalSecret
+  namespaceSelector:
+    matchExpressions:
+    - key: tmc-helper/tenant
+      operator: Exists
+  recipe: es-begins-with
+  recipeVersion: v1
+  type: custom-policy
+
