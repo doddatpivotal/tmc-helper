@@ -1,0 +1,17 @@
+fullName:
+  name: tanzu-app-viewer-cluster-access
+meta:
+  description: Provides view privileges to cluster resources
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - clustergroup
+  - cluster
+  resources:
+  - CLUSTER_GROUP
+  - CLUSTER
+  aggregationRule:
+    clusterRoleSelectors:
+    - matchLabels:
+        apps.tanzu.vmware.com/aggregate-to-app-viewer-cluster-access: "true"
