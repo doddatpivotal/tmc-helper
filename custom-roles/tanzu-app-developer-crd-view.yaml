@@ -1,10 +1,10 @@
 fullName:
-  name: contour-user
+  name: tanzu-app-developer-crd-view
 meta:
-  description: Provides standard edit access for contour resources
+  description: Provides standard viewer access for contour resources
   labels:
     created-by: tmc-helper
-    apps.tanzu.vmware.com/aggregate-to-app-editor: "true"
+    tmc-helper/aggregate-to-app-viewer: "true"
 spec:
   resourceTypes:
   - workspaces
@@ -18,10 +18,14 @@ spec:
     resources:
     - httpproxies
     verbs:
-    - create
-    - update
-    - delete
-    - patch
+    - list
+    - get
+    - watch
+  - apiGroups:
+    - kappctrl.k14s.io
+    resources:
+    - apps
+    verbs:
     - list
     - get
     - watch

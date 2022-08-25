@@ -1,9 +1,10 @@
 fullName:
-  name: tanzu-app-viewer
+  name: wrapper-view
 meta:
-  description: Provides standard view access for tanzu resources
+  description: Wraps the OOTB view ClusterRole with label so that it can be roled up to tanzu-app-view
   labels:
     created-by: tmc-helper
+    tmc-helper/aggregate-to-app-viewer: "true"
 spec:
   resourceTypes:
   - workspaces
@@ -13,7 +14,5 @@ spec:
   - NAMESPACE
   aggregationRule:
     clusterRoleSelectors:
-    - matchLabels:
-        apps.tanzu.vmware.com/aggregate-to-app-viewer: "true"
     - matchLabels:
         rbac.authorization.k8s.io/aggregate-to-view: "true"

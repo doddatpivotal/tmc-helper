@@ -1,0 +1,35 @@
+fullName:
+  name: tanzu-app-developer-crd-edit
+meta:
+  description: Provides access for k8s resources common to tanzu developers which are outside of the standard k8s edit ClusterRole.  Not intended to be directly assigned to users or groups.
+  labels:
+    created-by: tmc-helper
+    tmc-helper/aggregate-to-app-editor: "true"
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  rules:
+  - apiGroups:
+    - projectcontour.io
+    resources:
+    - httpproxies
+    verbs:
+    - create
+    - update
+    - delete
+    - patch
+    - list
+    - get
+    - watch
+  - apiGroups:
+    - kappctrl.k14s.io
+    resources:
+    - apps
+    verbs:
+    - list
+    - get
+    - watch

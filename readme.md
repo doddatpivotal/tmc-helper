@@ -16,10 +16,9 @@ export PARAMS_YAML=local-config/params.yaml
 
 TMC Advanced offers the ability to create custom roles that can be bound to users and groups.  The following set of custom roles aligns with common Tanzu usage.
 
-- vSphere with Tanzu
-- Contour
-- Build Service
-- General Tanzu App
+- vSphere with Tanzu: Ability to use privilege pod security policy
+- Build Service: Ability to view or edit TBS's custom resource definitions
+- General Tanzu App: View and edit roles.  Here role aggregation is used to collect permissions from standard k8s resources and custom resource definitions used commonly used by Tanzu developers and viewers
 
 You can apply custom roles by executing the following.  It will upsert the custom roles maintained in the `custom-roles` directory.
 

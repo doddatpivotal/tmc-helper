@@ -1,7 +1,7 @@
 fullName:
   name: tanzu-app-viewer-cluster-access
 meta:
-  description: Provides view privileges to cluster resources
+  description: Provides view privileges to cluster resources, like ClusterBuilder, etc
   labels:
     created-by: tmc-helper
 spec:

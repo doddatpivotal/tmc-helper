@@ -1,0 +1,17 @@
+fullName:
+  name: tanzu-app-view
+meta:
+  description: Provides standard view access for tanzu resources
+  labels:
+    created-by: tmc-helper
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  aggregationRule:
+    clusterRoleSelectors:
+    - matchLabels:
+        tmc-helper/aggregate-to-app-view: "true"

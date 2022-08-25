@@ -1,0 +1,18 @@
+fullName:
+  name: wrapper-edit
+meta:
+  description: Wraps the OOTB edit ClusterRole with label so that it can be roled up to tanzu-app-edit
+  labels:
+    created-by: tmc-helper
+    tmc-helper/aggregate-to-app-editor: "true"
+spec:
+  resourceTypes:
+  - workspaces
+  - namespaces
+  resources:
+  - WORKSPACE
+  - NAMESPACE
+  aggregationRule:
+    clusterRoleSelectors:
+    - matchLabels:
+        rbac.authorization.k8s.io/aggregate-to-edit: "true"
